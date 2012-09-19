@@ -1,4 +1,5 @@
 require 'sinatra'
+require 'sinatra/reloader'
 
 configure do
 	mime_type :json, 'application/json'
