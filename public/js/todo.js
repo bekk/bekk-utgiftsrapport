@@ -1,26 +1,10 @@
-function TodoCtrl($scope) {
-  $scope.todos = [
-    {text:'learn angular', done:true},
-    {text:'build an angular app', done:false}];
+function UtgiftCtrl($scope) {
+  $scope.utgifter = [];
  
-  $scope.addTodo = function() {
-    $scope.todos.push({text:$scope.todoText, done:false});
-    $scope.todoText = '';
-  };
- 
-  $scope.remaining = function() {
-    var count = 0;
-    angular.forEach($scope.todos, function(todo) {
-      count += todo.done ? 0 : 1;
-    });
-    return count;
-  };
- 
-  $scope.archive = function() {
-    var oldTodos = $scope.todos;
-    $scope.todos = [];
-    angular.forEach(oldTodos, function(todo) {
-      if (!todo.done) $scope.todos.push(todo);
-    });
+  $scope.addUtgift = function() {
+    var sum = parseFloat($scope.sum, 10);
+    $scope.utgifter.unshift({tittel: $scope.tittel, sum: sum});
+    $scope.tittel = '';
+    $scope.sum = 0.0;
   };
 }

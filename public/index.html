@@ -11,21 +11,19 @@
 	</head>
 	<body>
 		<div class="container">
-			<h2>Todo</h2>
-			<div ng-controller="TodoCtrl">
-				<span>{{remaining()}} of {{todos.length}} remaining</span>
-				[ <a href="" ng-click="archive()">archive</a> ]
+			<h2>Utgiftsrapportsystem</h2>
+			<div ng-controller="UtgiftCtrl">
+				<form ng-submit="addUtgift()" class="form-horizontal">
+					<input type="text" ng-model="tittel" placeholder="Beskrivelse">
+					<input type="number" step="any" ng-model="sum" placeholder="Kroner og øre">
+					<input class="btn btn-primary" type="submit" value="add">
+				</form>				
 				<ul class="unstyled">
-					<li ng-repeat="todo in todos">
-						<input type="checkbox" ng-model="todo.done">
-						<span class="done-{{todo.done}}">{{todo.text}}</span>
+					<li ng-repeat="utgift in utgifter">
+						<span>{{utgift.tittel}}</span>
+						<span>{{utgift.sum}} NOK</span>
 					</li>
 				</ul>
-				<form ng-submit="addTodo()" class="form-horizontal">
-					<input type="text" ng-model="title" size="30" placeholder="Beskrivelse">
-					<input type="text" ng-model="todoText"  size="30" placeholder="Kroner og øre">
-					<input class="btn btn-primary" type="submit" value="add">
-				</form>
 			</div>
 		</div>
 	</body>
