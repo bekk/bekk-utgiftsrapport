@@ -12,16 +12,16 @@
 	<body>
 		<div class="container">
 			<h2>Utgiftsrapportsystem</h2>
-			<div ng-controller="UtgiftCtrl">
-				<form ng-submit="addUtgift()" class="form-horizontal">
-					<input type="text" ng-model="tittel" placeholder="Beskrivelse">
-					<input type="number" step="any" ng-model="sum" placeholder="Kroner og øre">
+			<div ng-controller="UtgiftCtrl" class="row">
+				<form ng-submit="addUtgift()" class="form-horizontal span12">
+					<input type="text" ng-model="tittel" placeholder="Beskrivelse" class="span5">
+					<input type="number" step="any" ng-model="sum" placeholder="Kroner og øre" class="span2">
 					<input class="btn btn-primary" type="submit" value="add">
 				</form>				
 				<ul class="unstyled">
-					<li ng-repeat="utgift in utgifter">
-						<span>{{utgift.tittel}}</span>
-						<span>{{utgift.sum}} NOK</span>
+					<li ng-repeat="utgift in utgifter" class="span12">
+						<span class="span5">{{utgift.tittel}}</span>
+						<span class="span2">{{utgift.sum}} NOK</span>
 					</li>
 				</ul>
 			</div>
