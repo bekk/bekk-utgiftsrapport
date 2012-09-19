@@ -10,23 +10,23 @@
 		<script src="js/todo.js"></script>
 	</head>
 	<body>
-		<div ng-controller="TodoCtrl" class="container">
+		<div class="container">
 			<h2>Todo</h2>
-			<span>{{remaining()}} of {{todos.length}} remaining</span>
-			[ <a href="" ng-click="archive()">archive</a> ]
-			<ul class="unstyled">
-				<li ng-repeat="todo in todos">
-					<input type="checkbox" ng-model="todo.done">
-					<span class="done-{{todo.done}}">{{todo.text}}</span>
-				</li>
-			</ul>
-			<form ng-submit="addTodo()">
-				<input type="text" ng-model="title" size="30" placeholder="Beskrivelse">
-				<div class="input-append">
+			<div ng-controller="TodoCtrl">
+				<span>{{remaining()}} of {{todos.length}} remaining</span>
+				[ <a href="" ng-click="archive()">archive</a> ]
+				<ul class="unstyled">
+					<li ng-repeat="todo in todos">
+						<input type="checkbox" ng-model="todo.done">
+						<span class="done-{{todo.done}}">{{todo.text}}</span>
+					</li>
+				</ul>
+				<form ng-submit="addTodo()" class="form-horizontal">
+					<input type="text" ng-model="title" size="30" placeholder="Beskrivelse">
 					<input type="text" ng-model="todoText"  size="30" placeholder="Kroner og øre">
 					<input class="btn btn-primary" type="submit" value="add">
-				</div>
-			</form>
+				</form>
+			</div>
 		</div>
 	</body>
 </html>
