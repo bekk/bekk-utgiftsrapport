@@ -10,7 +10,9 @@ function UtgiftCtrl($scope) {
   $scope.addUtgift = function() {
     var sum = parseFloat($scope.sum, 10);
     $scope.utgifter.unshift({tittel: $scope.tittel, sum: sum});
-    $scope.tittel = '';
-    $scope.sum = 0.0;
+    $scope.tittel = null;
+    $scope.sum = null;
+
+    $('#title-input').focus();
   };
 }
