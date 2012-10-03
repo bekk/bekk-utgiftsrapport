@@ -11,6 +11,9 @@ function UtgiftCtrl($scope, sharedProperties) {
   };
 }
 
-function RenderReportCtrl($scope) {
+function RenderReportCtrl($scope, sharedProperties) {
+	$scope.utgifter = sharedProperties.getUtgifter();
+	var matrix = utils.receiptsToMatrix($scope.utgifter);
 
+	$scope.matrix = matrix;
 }

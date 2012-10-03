@@ -4,4 +4,4 @@ angular.module('usys', []).
       when('/renderReport', {templateUrl: 'tpl/renderReport.html', controller: RenderReportCtrl}).
       otherwise({templateUrl: 'tpl/addReceipt.html', controller: UtgiftCtrl});
   }]).
-  service('sharedProperties', sharedProperties);
+  service('sharedProperties', services.sharedProperties);
