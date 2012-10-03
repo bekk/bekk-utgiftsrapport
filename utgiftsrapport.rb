@@ -1,6 +1,6 @@
 class Utgiftsrapport < Sinatra::Base
   get "/" do
-    "Hello WOrldz!"
+    send_file File.join(settings.public_folder, 'index.html')
   end
 
   configure do
