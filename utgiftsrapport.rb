@@ -19,20 +19,27 @@ class Utgiftsrapport < Sinatra::Base
   post '/utgift' do
     init_db    
     # TODO: Legg hent user_id fra egnet sted
-    if params[:id].nil?
-      inserted = @coll.insert({'user_id' => 1, 'data' => params[:data].to_s })
+    if params[:id].nil? || params[:id].empty?
+      utgift = @coll.insert({'user_id' => 1, 'data' => params[:data].to_s })
     else
-      inserted = @coll.update({'_id' => BSON::ObjectId(params[:id])}, {'user_id' => 1, 'data' => params[:data].to_s})
+      utgift = @coll.update({'_id' => BSON::ObjectId(params[:id])}, {'user_id' => 1, 'data' => params[:data].to_s})
     end
     content_type :json
-    inserted.to_s
+    utgift.to_json
   end
 
   get '/utgift' do
     init_db
-    inserted = @coll.find({'user_id' => 1})
+    utgift = @coll.find({'_id' => BSON::ObjectId(params[:id])})
     content_type :json
-    inserted.first.to_s
+    utgift.first.to_json
+  end
+
+  get '/utgifter' do
+    init_db
+    utgifter = @coll.find({'user_id' => 1})
+    content_type :json
+    utgifter.to_a.to_json
   end
 
 
