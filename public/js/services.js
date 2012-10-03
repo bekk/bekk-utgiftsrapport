@@ -1,10 +1,6 @@
 var services = (function() {
 	var sharedProperties = function () {
-		var utgifter = [
-		    {tittel: "Mat", sum: "344"},
-		    {tittel: "Taxi", sum: "152"},
-		    {tittel: "Bytur", sum: "877"}
-		];
+		var utgifter = [];
 
 		return {
 		  	getUtgifter:function () {
