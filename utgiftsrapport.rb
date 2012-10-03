@@ -20,7 +20,7 @@ class Utgiftsrapport < Sinatra::Base
     @db = @conn['test']
     @coll = @db['usysdev']
     # TODO: Legg hent user_id fra egnet sted
-    if params[:id] == ""
+    if params[:id].nil?
       inserted = @coll.insert({'user_id' => 1, 'data' => params[:data].to_s })
     else
       inserted = @coll.update({'_id' => BSON::ObjectId(params[:id])}, {'user_id' => 1, 'data' => params[:data].to_s})
