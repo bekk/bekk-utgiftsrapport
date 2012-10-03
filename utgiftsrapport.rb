@@ -2,6 +2,7 @@ class Utgiftsrapport < Sinatra::Base
   configure :development do 
     register Sinatra::Reloader
   end
+
   get "/" do
     send_file File.join(settings.public_folder, 'index.html')
   end
@@ -15,10 +16,8 @@ class Utgiftsrapport < Sinatra::Base
     "{name: 'Utgiftsrapporteringssystem Enterprise Edition', version: 0.1}"
   end
 
-  post '/insert' do
-    @conn = Mongo::Connection.new
-    @db = @conn['test']
-    @coll = @db['usysdev']
+  post '/utgift' do
+    init_db    
     # TODO: Legg hent user_id fra egnet sted
     if params[:id].nil?
       inserted = @coll.insert({'user_id' => 1, 'data' => params[:data].to_s })
@@ -29,12 +28,19 @@ class Utgiftsrapport < Sinatra::Base
     inserted.to_s
   end
 
-  get '/get_usys_data' do
-    @conn = Mongo::Connection.new
-    @db = @conn['test']
-    @coll = @db['usysdev']
+  get '/utgift' do
+    init_db
     inserted = @coll.find({'user_id' => 1})
     content_type :json
     inserted.first.to_s
+  end
+
+
+private
+
+  def init_db
+    @conn = Mongo::Connection.new
+    @db = @conn['test']
+    @coll = @db['usysdev']
   end
 end
