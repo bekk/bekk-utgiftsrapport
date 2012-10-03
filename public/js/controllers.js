@@ -16,3 +16,6 @@ function UtgiftCtrl($scope) {
     $('#title-input').focus();
   };
 }
+
+function RenderReportCtrl($scope) {
+}
