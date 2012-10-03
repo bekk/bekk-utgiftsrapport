@@ -6,4 +6,5 @@
 * Installer Bundler: gem install bundler
 * I denne katalogen: bundle install
 * Installer mongodb med fra apt, brew e.l 
+* Hvis windows: start mongodb med mongod.exe --dbpath c:\mongodb\data
 * Deretter _bundle exec rackup_ for å starte utviklingsserver
