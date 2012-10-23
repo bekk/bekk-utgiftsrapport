@@ -20,12 +20,12 @@ class Utgiftsrapport < Sinatra::Base
     init_db    
     # TODO: Legg hent user_id fra egnet sted
     if params[:id].nil? || params[:id].empty?
-      utgift = @coll.insert({'user_id' => 1, 'data' => params[:data].to_s })
+      utgift = @coll.insert({'user_id' => 1,  'tittel' => params[:tittel].to_s, 'sum' => params[:sum]})
     else
-      utgift = @coll.update({'_id' => BSON::ObjectId(params[:id])}, {'user_id' => 1, 'data' => params[:data].to_s})
+      utgift = @coll.update({'_id' => BSON::ObjectId(params[:id])}, {'user_id' => 1, 'tittel' => params[:tittel].to_s, 'sum' => params[:sum]})
     end
     content_type :json
-    utgift.to_json
+    utgift.to_s
   end
 
   get '/utgift' do
