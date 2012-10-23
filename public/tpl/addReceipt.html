@@ -9,7 +9,7 @@
 		<li ng-repeat="utgift in utgifter" class="span12">
 			<span class="span5">{{utgift.tittel}}</span>
 			<span class="span2">{{utgift.sum}} NOK</span>
-			<button ng-click="slettUtgift($event)" id="{{utgift._id.$oid}}">X</button>
+			<button ng-click="slettUtgift($event)" id="{{utgift._id.$oid}}">&#x2716;</button>
 		</li>
 	</ul>
 </div>
