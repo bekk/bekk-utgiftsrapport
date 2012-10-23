@@ -5,6 +5,9 @@ function UtgiftCtrl($scope, $http, sharedProperties) {
         sharedProperties.setUtgifter(data);
         $scope.utgifter = data
       },
+      error: function(data, status, headers, config) {
+          alert("error");
+        },
       async: false
     });
   }
@@ -15,8 +18,20 @@ function UtgiftCtrl($scope, $http, sharedProperties) {
  
   $scope.addUtgift = function() {
     var sum = parseFloat($scope.sum, 10);
-    $scope.utgifter.unshift({tittel: $scope.tittel, sum: sum});
-    jQuery.post("/utgift", {tittel: $scope.tittel, sum: sum });
+
+    jQuery.ajax({
+      url: "/utgift", 
+      type: "POST",
+      data: {tittel: $scope.tittel, sum: sum},
+      success: function(data) {
+          refreshList();
+        },
+      error: function(data, status, headers, config) {
+          alert("error");
+        },
+      async: false
+    });
+
     $scope.tittel = null;
     $scope.sum = null;
 
