@@ -25,7 +25,7 @@ class Utgiftsrapport < Sinatra::Base
       utgift = @coll.update({'_id' => BSON::ObjectId(params[:id])}, {'user_id' => 1, 'tittel' => params[:tittel].to_s, 'sum' => params[:sum]})
     end
     content_type :json
-    utgift.to_s
+    utgift.to_json
   end
 
   get '/utgift' do
