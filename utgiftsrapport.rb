@@ -37,9 +37,9 @@ class Utgiftsrapport < Sinatra::Base
 
   delete '/utgift' do
     init_db
-    utgift = @coll.remove({'_id' => BSON::ObjectId(params[:id])})
+    result = @coll.remove({'_id' => BSON::ObjectId(params[:id])})
     content_type :json
-    utgift.to_json
+    result.to_json
   end
 
   get '/utgifter' do
