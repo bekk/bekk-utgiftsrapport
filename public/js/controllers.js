@@ -1,12 +1,15 @@
-function UtgiftCtrl($scope, sharedProperties) {
-  jQuery.ajax({url: "/utgifter", 
-    success: function(data) {
-      sharedProperties.setUtgifter(data);
-      console.log(data);
-      $scope.utgifter = sharedProperties.getUtgifter();
-    },
-    async: false
-  });
+function UtgiftCtrl($scope, $http, sharedProperties) {
+  function refreshList() {
+    jQuery.ajax({url: "/utgifter", 
+      success: function(data) {
+        sharedProperties.setUtgifter(data);
+        $scope.utgifter = data
+      },
+      async: false
+    });
+  }
+
+  refreshList();
 
   $scope.utgifter = sharedProperties.getUtgifter();
  
@@ -18,6 +21,19 @@ function UtgiftCtrl($scope, sharedProperties) {
     $scope.sum = null;
 
     $('#title-input').focus();
+  };
+
+  $scope.slettUtgift = function(event) {
+    var id = event.srcElement.id;
+    $http({
+      url: "/utgift",
+      method: "DELETE",
+      params: {"id": id}
+    }).success(function(data, status, headers, config) {
+        refreshList();
+    }).error(function(data, status, headers, config) {
+        alert("error");
+    });
   };
 }
 
