@@ -8,3 +8,4 @@
 * Installer mongodb med fra apt, brew e.l 
 * Hvis windows: start mongodb med mongod.exe --dbpath c:\mongodb\data
 * Deretter _bundle exec rackup_ for å starte utviklingsserver
+* http://localhost:9292/index.html
