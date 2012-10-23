@@ -25,14 +25,17 @@ function UtgiftCtrl($scope, $http, sharedProperties) {
 
   $scope.slettUtgift = function(event) {
     var id = event.srcElement.id;
-    $http({
+    jQuery.ajax({
       url: "/utgift",
-      method: "DELETE",
-      params: {"id": id}
-    }).success(function(data, status, headers, config) {
-        refreshList();
-    }).error(function(data, status, headers, config) {
-        alert("error");
+      type: "DELETE",
+      data: {"id": id},
+      success: function(data, status, headers, config) {
+          refreshList();
+        },
+      error: function(data, status, headers, config) {
+          alert("error");
+        },
+      async: false
     });
   };
 }
