@@ -1,9 +1,24 @@
 <h2>Rapporten:</h2>
 
-<table class="table table-bordered">
-	<tr ng-repeat="list in matrix">
-		<td ng-repeat="cell in list">
-			{{cell}}
+<table>
+	<tr>
+		<td>
+			<table class="table table-bordered">
+				<tr ng-repeat="utgift in utgifter">
+					<td>
+						{{utgift.tittel}}
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td>
+			<table class="table table-bordered">
+				<tr ng-repeat="list in matrix">
+					<td ng-repeat="cell in list">
+						{{cell}}
+					</td>
+				</tr>
+			</table>
 		</td>
 	</tr>
 </table>
