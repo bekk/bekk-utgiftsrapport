@@ -15,6 +15,7 @@
 
 ## Teknisk
 * Integrasjon mot SSO
+* Gjøre klart for akseptansetester (rspec/capybara/steak/poltergeist|phantom.js etc?)
 
 ## Funksjonalitet
 * Endre rapportvisning slik at man kan velge å levere rapport
