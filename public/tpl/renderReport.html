@@ -1,9 +1,10 @@
-<h2>Rapporten:</h2>
+<h2 style="display:inline;">Rapport for -periode-</h2> <!-- Fiks stilsetting her..-->
+<div class="btn btn-primary pull-right" ng-click="genererRapport($event)">Hent pdf</div>
 
 <table class="table table-bordered">
-	<tr ng-repeat="list in matrix">
-		<td ng-repeat="cell in list">
-			{{cell}}
-		</td>
-	</tr>
+    <tr ng-repeat="list in matrix">
+        <td ng-repeat="cell in list">
+            {{cell}}
+        </td>
+    </tr>
 </table>

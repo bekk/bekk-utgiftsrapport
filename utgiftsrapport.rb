@@ -50,6 +50,13 @@ class Utgiftsrapport < Sinatra::Base
     utgifter.to_a.to_json
   end
 
+  post '/rapport' do
+    # marker alle ikke-leverte utgiftsrapporter som levert
+    # dytt ut en pdf
+    content_type :json
+    "Hello World".to_json
+  end
+
 
 private
 

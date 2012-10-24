@@ -1,64 +1,81 @@
 function UtgiftCtrl($scope, $http, sharedProperties) {
-  function refreshList() {
-    jQuery.ajax({url: "/utgifter", 
-      success: function(data) {
-        sharedProperties.setUtgifter(data);
-        $scope.utgifter = data
-      },
-      error: function(data, status, headers, config) {
-          alert("error");
-        },
-      async: false
-    });
-  }
+    function refreshList() {
+        jQuery.ajax({url:"/utgifter",
+            success:function (data) {
+                sharedProperties.setUtgifter(data);
+                $scope.utgifter = data
+            },
+            error:function (data, status, headers, config) {
+                alert("error");
+            },
+            async:false
+        });
+    }
 
-  refreshList();
+    refreshList();
 
-  $scope.utgifter = sharedProperties.getUtgifter();
- 
-  $scope.addUtgift = function() {
-    var sum = parseFloat($scope.sum, 10);
+    $scope.utgifter = sharedProperties.getUtgifter();
 
-    jQuery.ajax({
-      url: "/utgift", 
-      type: "POST",
-      data: {tittel: $scope.tittel, sum: sum},
-      success: function(data) {
-          refreshList();
-        },
-      error: function(data, status, headers, config) {
-          alert("error");
-        },
-      async: false
-    });
+    $scope.addUtgift = function () {
+        var sum = parseFloat($scope.sum, 10);
 
-    $scope.tittel = null;
-    $scope.sum = null;
+        jQuery.ajax({
+            url:"/utgift",
+            type:"POST",
+            data:{tittel:$scope.tittel, sum:sum},
+            success:function (data) {
+                refreshList();
+            },
+            error:function (data, status, headers, config) {
+                alert("error");
+            },
+            async:false
+        });
 
-    $('#title-input').focus();
-  };
+        $scope.tittel = null;
+        $scope.sum = null;
 
-  $scope.slettUtgift = function(event) {
-    var id = event.target.id;
-    jQuery.ajax({
-      url: "/utgift",
-      type: "DELETE",
-      data: {"id": id},
-      success: function(data, status, headers, config) {
-          refreshList();
-        },
-      error: function(data, status, headers, config) {
-          alert("error");
-        },
-      async: false
-    });
-  };
+        $('#title-input').focus();
+    };
+
+    $scope.slettUtgift = function (event) {
+        var id = event.target.id;
+        jQuery.ajax({
+            url:"/utgift",
+            type:"DELETE",
+            data:{"id":id},
+            success:function (data, status, headers, config) {
+                refreshList();
+            },
+            error:function (data, status, headers, config) {
+                alert("error");
+            },
+            async:false
+        });
+    };
 }
 
 function RenderReportCtrl($scope, sharedProperties) {
-  
-	$scope.utgifter = sharedProperties.getUtgifter();
-	var matrix = utils.receiptsToMatrix($scope.utgifter);
 
-	$scope.matrix = matrix;
+    $scope.utgifter = sharedProperties.getUtgifter();
+    var matrix = utils.receiptsToMatrix($scope.utgifter);
+
+    $scope.matrix = matrix;
+
+    $scope.genererRapport = function (event) {
+        jQuery.ajax({
+            url:"/rapport",
+            type:"POST",
+            success:function (data, status, headers, config) {
+                // redirect til rapport?
+            },
+
+            error:function (data, status, headers, config) {
+                // push en feilmelding til toppen av siden man er på?
+                alert("noe gikk galt ved generering.")
+            },
+            async:false
+        })
+    }
+
 }
