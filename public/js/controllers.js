@@ -39,7 +39,7 @@ function UtgiftCtrl($scope, $http, sharedProperties) {
   };
 
   $scope.slettUtgift = function(event) {
-    var id = event.srcElement.id;
+    var id = event.target.id;
     jQuery.ajax({
       url: "/utgift",
       type: "DELETE",

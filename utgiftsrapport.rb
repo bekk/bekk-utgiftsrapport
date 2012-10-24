@@ -1,3 +1,4 @@
+require 'date'
 class Utgiftsrapport < Sinatra::Base
   configure :development do 
     register Sinatra::Reloader
@@ -20,7 +21,7 @@ class Utgiftsrapport < Sinatra::Base
     init_db    
     # TODO: Legg hent user_id fra egnet sted
     if params[:id].nil? || params[:id].empty?
-      utgift = @coll.insert({'user_id' => 1,  'tittel' => params[:tittel].to_s, 'sum' => params[:sum]})
+      utgift = @coll.insert({'user_id' => 1,  'tittel' => params[:tittel].to_s, 'sum' => params[:sum], :created_at => Time.now})
     else
       utgift = @coll.update({'_id' => BSON::ObjectId(params[:id])}, {'user_id' => 1, 'tittel' => params[:tittel].to_s, 'sum' => params[:sum]})
     end
