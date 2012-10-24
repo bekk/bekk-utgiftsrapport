@@ -5,10 +5,11 @@
 	<tr>
 		<td>
 			<table class="table table-bordered">
+				<tr><th>Beskrivelse av utlegg</th></tr>
 				<tr><td>Internett-tilknytning hjemmefra</td></tr>
 				<tr><td>Lunsj</td></tr>
 				<tr><td>Faggruppe- og avdelingskostnader</td></tr>
-				<tr><td>Representasjon (bespisning m/eksterne)</td></tr>
+				<tr><td>Representasjon</td></tr>
 				<tr ng-repeat="utgift in utgifter">
 					<td>{{utgift.tittel}}</td>
 				</tr>
@@ -16,14 +17,29 @@
 		</td>
 		<td>
 			<table class="table table-bordered">
+				<tr repeat="4 inner">
+					<th>Bilagnr.</th>
+					<th>Beløp</th>
+				</tr>
 				<tr repeat="4">
-					<td repeat="8"></td>
+					<td repeat="8">&nbsp;</td>
 				</tr>
 				<tr ng-repeat="list in matrix">
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
 					<td ng-repeat="cell in list">
 						{{cell}}
 					</td>
 				</tr>
+			</table>
+		</td>
+		<td>
+			<table class="table table-bordered">
+				<tr>
+					<th>Sum per linje</th>
+					<th>Konto</th>
+				</tr>
+				<tr repeat="7"><td>&nbsp;</td><td>&nbsp;</td></tr>
 			</table>
 		</td>
 	</tr>
