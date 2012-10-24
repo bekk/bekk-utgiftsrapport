@@ -62,11 +62,3 @@ function RenderReportCtrl($scope, sharedProperties) {
 
 	$scope.matrix = matrix;
 }
-
-function GenerateReportCtrl($scope, sharedProperties) {
-
-	$scope.utgifter = sharedProperties.getUtgifter();
-	var matrix = utils.receiptsToMatrix($scope.utgifter);
-
-	$scope.matrix = matrix;
-}
