@@ -57,9 +57,11 @@ function UtgiftCtrl($scope, $http, sharedProperties) {
 
 function RenderReportCtrl($scope, sharedProperties) {
   refreshList($scope, sharedProperties);
-  
+
 	$scope.utgifter = sharedProperties.getUtgifter();
 	var matrix = utils.receiptsToMatrix($scope.utgifter);
 
 	$scope.matrix = matrix;
+
+  $scope.$on('$viewContentLoaded', doRepeat);
 }

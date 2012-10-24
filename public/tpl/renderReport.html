@@ -4,15 +4,20 @@
 	<tr>
 		<td>
 			<table class="table table-bordered">
+				<tr><td>Internett-tilknytning hjemmefra</td></tr>
+				<tr><td>Lunsj</td></tr>
+				<tr><td>Faggruppe- og avdelingskostnader</td></tr>
+				<tr><td>Representasjon (bespisning m/eksterne)</td></tr>
 				<tr ng-repeat="utgift in utgifter">
-					<td>
-						{{utgift.tittel}}
-					</td>
+					<td>{{utgift.tittel}}</td>
 				</tr>
 			</table>
 		</td>
 		<td>
 			<table class="table table-bordered">
+				<tr repeat="4">
+					<td repeat="8"></td>
+				</tr>
 				<tr ng-repeat="list in matrix">
 					<td ng-repeat="cell in list">
 						{{cell}}
