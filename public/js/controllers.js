@@ -38,8 +38,7 @@ function UtgiftCtrl($scope, $http, sharedProperties) {
         $('#title-input').focus();
     };
 
-    $scope.slettUtgift = function(event) {
-        var id = event.srcElement.id;
+    $scope.slettUtgift = function(id) {
         jQuery.ajax({
             url: "/utgift",
             type: "DELETE",
