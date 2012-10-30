@@ -14,13 +14,19 @@
 	<script src="js/repeat.js"></script>
 </head>
 
-<body>
+<body style="margin: 10px;"> <!-- TODO: Put the style somewhere else -->
+	<form class="form-inline pull-right" action="/" method="POST">
+		<input type="text" name="user" class="input-small" placeholder="Brukernavn">
+		<input type="password" name="password" class="input-small" placeholder="Passord">
+		<button type="submit" class="btn">Logg inn <i class="icon-lock"></i></button>
+		</form>
 	<div class="container">
-		<ul class="nav nav-pills">
-			<li active-link="active"><a href="#">Legg til utgift</a></li>
-			<li active-link="active"><a href="#/renderReport">Generer rapport</a></li>
-			<li><form action="/" method="POST">Brukernavn: <input type="text" name="user"><input type="submit" value="'Logg inn'"></form></li>
-		</ul>
+		<div>
+			<ul class="nav nav-pills">
+				<li active-link="active"><a href="#">Legg til utgift</a></li>
+				<li active-link="active"><a href="#/renderReport">Generer rapport</a></li>
+			</ul>
+		<div>
 		<div ng-view></div>
 	</div>
 </body>

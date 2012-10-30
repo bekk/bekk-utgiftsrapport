@@ -9,6 +9,7 @@ class Utgiftsrapport < Sinatra::Base
   post "/" do
     session[:user] = params[:user]
     p params[:user]
+    send_file File.join(settings.public_folder, 'index.html')
     true
   end
 
