@@ -1,25 +1,27 @@
 <div ng-controller="UtgiftCtrl">
 	<form ng-submit="addUtgift()" class="row">
-		<div class="span5"><input type="text" ng-model="tittel" placeholder="Beskrivelse" id="title-input" class="input-block-level" autofocus /></div>
-		<div class="span5"><input type="number" step="any" ng-model="sum" placeholder="Kroner og øre" class="input-block-level" /></div>
-		<div class="span2"><input class="btn btn-block" type="submit" value="add" /></div>
+		<div class="span7"><input type="text" ng-model="tittel" placeholder="Beskrivelse" id="title-input" class="input-block-level" autofocus /></div>
+		<div class="span3"><input type="number" step="any" ng-model="sum" placeholder="Kroner og øre" class="input-block-level" /></div>
+		<div class="span2"><input class="btn btn-block" type="submit" value="Legg til" /></div>
 	</form>
 	<div class="row">
-		<table class="table table-striped span12">
-			<thead>
-				<tr>
-					<th>Beskrivelse</th>
-					<th>Beløp</th>
-					<th></th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr ng-repeat="utgift in utgifter">
-					<td><span>{{utgift.tittel}}</span></td>
-					<td><span>{{utgift.sum}} NOK</span></td>
-					<td><button ng-click="slettUtgift(utgift._id.$oid)" class="btn pull-right"><i class="icon-trash"></i></button></td>
-				</tr>
-			</tbody>
-		</table>
+		<div class="span12">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Beskrivelse</th>
+						<th>Beløp</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="utgift in utgifter">
+						<td><span>{{utgift.tittel}}</span></td>
+						<td><span>{{utgift.sum}} NOK</span></td>
+						<td><button ng-click="slettUtgift(utgift._id.$oid)" class="btn pull-right"><i class="icon-trash"></i></button></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</div>
 </div>
