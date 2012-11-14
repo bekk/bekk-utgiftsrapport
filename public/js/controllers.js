@@ -11,6 +11,10 @@ function refreshList($scope, sharedProperties) {
     });
 }
 
+function MenuCtrl($scope, $location) {
+    $scope.location = $location;
+}
+
 function UtgiftCtrl($scope, $http, sharedProperties) {
     refreshList($scope, sharedProperties);
 
