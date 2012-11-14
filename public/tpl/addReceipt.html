@@ -5,12 +5,21 @@
 		<div class="span2"><input class="btn btn-block" type="submit" value="add" /></div>
 	</form>
 	<div class="row">
-		<ul class="unstyled">
-			<li ng-repeat="utgift in utgifter">
-				<span class="span9">{{utgift.tittel}}</span>
-				<span class="span2">{{utgift.sum}} NOK</span>
-				<button ng-click="slettUtgift(utgift._id.$oid)" class="btn span1"><i class="icon-trash"></i></button>
-			</li>
-		</ul>
+		<table class="table table-striped span12">
+			<thead>
+				<tr>
+					<th>Beskrivelse</th>
+					<th>Beløp</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="utgift in utgifter">
+					<td><span>{{utgift.tittel}}</span></td>
+					<td><span>{{utgift.sum}} NOK</span></td>
+					<td><button ng-click="slettUtgift(utgift._id.$oid)" class="btn pull-right"><i class="icon-trash"></i></button></td>
+				</tr>
+			</tbody>
+		</table>
 	</div>
 </div>
