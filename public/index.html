@@ -18,18 +18,21 @@
 <body> <!-- TODO: Put the style somewhere else -->
 	<div class="container-fluid">
 		<div class="navbar navbar-fixed-top">
-			<a class="brand">USYS</a>
 			<div class="navbar-inner">
-				<form class="navbar-form pull-right" action="/" method="POST">
-					<input type="text" name="user" class="input-small" placeholder="Brukernavn">
-					<input type="password" name="password" class="input-small" placeholder="Passord">
-					<button type="submit" class="btn">Logg inn <i class="icon-lock"></i></button>
-				</form>
-				<div>
-					<ul class="nav">
-						<li active-link="active"><a href="#">Legg til utgift</a></li>
-						<li active-link="active"><a href="#/renderReport">Generer rapport</a></li>
-					</ul>
+				<div class="container-fluid">
+						<a class="brand">USYS</a>
+						<form class="navbar-form pull-right" action="/" method="POST">
+							<input type="text" name="user" class="input-small" placeholder="Brukernavn">
+							<input type="password" name="password" class="input-small" placeholder="Passord">
+							<button type="submit" class="btn">Logg inn <i class="icon-lock"></i></button>
+						</form>
+						<div>
+							<ul class="nav">
+								<li active-link="active"><a href="#">Legg til utgift</a></li>
+								<li active-link="active"><a href="#/renderReport">Generer rapport</a></li>
+							</ul>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
