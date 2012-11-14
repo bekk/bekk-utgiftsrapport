@@ -69,7 +69,7 @@ function RenderReportCtrl($scope, sharedProperties) {
             url:"/rapport",
             type:"POST",
             success:function (data, status, headers, config) {
-                // redirect til rapport?
+                console.log(data);
             },
 
             error:function (data, status, headers, config) {
