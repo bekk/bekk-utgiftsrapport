@@ -1,15 +1,16 @@
-<h2>Utgiftsrapportsystem</h2>
-<div ng-controller="UtgiftCtrl" class="row">
-	<form ng-submit="addUtgift()" class="form-horizontal span12">
-		<input type="text" ng-model="tittel" placeholder="Beskrivelse" class="span5" id="title-input" autofocus />
-		<input type="number" step="any" ng-model="sum" placeholder="Kroner og øre" class="span2" />
-		<input class="btn btn-primary" type="submit" value="add" />
-	</form>				
-	<ul class="unstyled">
-		<li ng-repeat="utgift in utgifter" class="span12">
-			<span class="span5">{{utgift.tittel}}</span>
-			<span class="span2">{{utgift.sum}} NOK</span>
-			<button ng-click="slettUtgift(utgift._id.$oid)" class="btn-mini"><i class="icon-trash"></i></button>
-		</li>
-	</ul>
+<div ng-controller="UtgiftCtrl">
+	<form ng-submit="addUtgift()" class="row">
+		<div class="span5"><input type="text" ng-model="tittel" placeholder="Beskrivelse" id="title-input" class="input-block-level" autofocus /></div>
+		<div class="span5"><input type="number" step="any" ng-model="sum" placeholder="Kroner og øre" class="input-block-level" /></div>
+		<div class="span2"><input class="btn btn-block" type="submit" value="add" /></div>
+	</form>
+	<div class="row">
+		<ul class="unstyled">
+			<li ng-repeat="utgift in utgifter">
+				<span class="span9">{{utgift.tittel}}</span>
+				<span class="span2">{{utgift.sum}} NOK</span>
+				<button ng-click="slettUtgift(utgift._id.$oid)" class="btn span1"><i class="icon-trash"></i></button>
+			</li>
+		</ul>
+	</div>
 </div>

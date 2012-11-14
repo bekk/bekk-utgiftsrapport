@@ -4,6 +4,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title>USYS 0.1</title>
 	<link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<script src="lib/jquery/jquery.min.js"></script>
 	<script src="lib/bootstrap/js/bootstrap.min.js"></script>
 	<script src="lib/angular/angular.js"></script>
@@ -14,21 +15,29 @@
 	<script src="js/repeat.js"></script>
 </head>
 
-<body style="margin: 10px;"> <!-- TODO: Put the style somewhere else -->
-	<form class="form-inline pull-right" action="/" method="POST">
-		<input type="text" name="user" class="input-small" placeholder="Brukernavn">
-		<input type="password" name="password" class="input-small" placeholder="Passord">
-		<button type="submit" class="btn">Logg inn <i class="icon-lock"></i></button>
-		</form>
-	<div class="container">
-		<div>
-			<ul class="nav nav-pills">
-				<li active-link="active"><a href="#">Legg til utgift</a></li>
-				<li active-link="active"><a href="#/renderReport">Generer rapport</a></li>
-			</ul>
-		<div>
-		<div ng-view></div>
+<body> <!-- TODO: Put the style somewhere else -->
+	<div class="container-fluid">
+		<div class="navbar navbar-fixed-top">
+			<div class="navbar-inner">
+				<div class="container-fluid">
+						<a class="brand">USYS</a>
+						<form class="navbar-form pull-right" action="/" method="POST">
+							<input type="text" name="user" class="input-small" placeholder="Brukernavn">
+							<input type="password" name="password" class="input-small" placeholder="Passord">
+							<button type="submit" class="btn">Logg inn <i class="icon-lock"></i></button>
+						</form>
+						<div>
+							<ul class="nav">
+								<li active-link="active"><a href="#">Legg til utgift</a></li>
+								<li active-link="active"><a href="#/renderReport">Generer rapport</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
+	<div class="container app" ng-view></div>
 </body>
 
 </html>
