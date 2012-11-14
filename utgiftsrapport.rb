@@ -7,8 +7,12 @@ class Utgiftsrapport < Sinatra::Base
   enable :sessions
 
   post "/" do
-    session[:user] = params[:user]
-    p params[:user]
+    require "net/ldap"
+    ldap_con = Net::LDAP.new(:host => "midgard.bekk.no", :port => 389, :base => "dc=bekk,dc=no", :auth => { :method => :simple, :username => params[:user], :password => params[:password]})
+    if ldap_con.bind
+      session[:user] = params[:user]
+      p "#{params[:user]} logget inn"
+    end
     send_file File.join(settings.public_folder, 'index.html')
     true
   end
@@ -20,7 +24,7 @@ class Utgiftsrapport < Sinatra::Base
   get "/rapport" do
       init_db
       html = "<table><tr><th>Beskrivelse</th><th>Sum</th><th>Dato</th></tr>"
-      results = @coll.find({'user_id' => 1})
+      results = @coll.find({'user_id' => params[:user]})
       results.each do |f|
 	p f
 	html += "<tr>"
