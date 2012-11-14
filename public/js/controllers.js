@@ -69,16 +69,36 @@ function RenderReportCtrl($scope, sharedProperties) {
     $scope.$on('$viewContentLoaded', doRepeat);
 
     $scope.genererRapport = function (event) {
+        var opts = {
+            lines: 11, // The number of lines to draw
+            length: 4, // The length of each line
+            width: 2, // The line thickness
+            radius: 5, // The radius of the inner circle
+            corners: 1, // Corner roundness (0..1)
+            rotate: 0, // The rotation offset
+            color: '#000', // #rgb or #rrggbb
+            speed: 1, // Rounds per second
+            trail: 60, // Afterglow percentage
+            shadow: false, // Whether to render a shadow
+            hwaccel: false, // Whether to use hardware acceleration
+            className: 'spinner', // The CSS class to assign to the spinner
+            zIndex: 2e9, // The z-index (defaults to 2000000000)
+            top: 'auto', // Top position relative to parent in px
+            left: 'auto' // Left position relative to parent in px
+        };
+        var target = $('#generate-report');
+        var spinner = new Spinner(opts).spin(target);
         jQuery.ajax({
             url:"/rapport",
-            type:"POST",
+            type:"GET",
             success:function (data, status, headers, config) {
-                console.log(data);
+                console.log(headers);
+                spinner.stop();
             },
 
             error:function (data, status, headers, config) {
-                // push en feilmelding til toppen av siden man er på?
-                alert("noe gikk galt ved generering.")
+                console.log("noe gikk galt ved generering: " + headers);
+                spinner.stop();
             },
             async:false
         })
