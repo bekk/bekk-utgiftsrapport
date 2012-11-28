@@ -19,8 +19,9 @@
 
 ## Funksjonalitet
 * Endre rapportvisning slik at man kan velge å levere rapport
-* Alle ikke-leverte utgifter som er med i rapporten skal da merkes som levert
+* Utgifter skal markeres som levert når man velger å levere en rapport
 * Vise, kollapset, andre perioder man har levert utgifter for.
 * Få rapport som PDF
 * Utvide rapport til å bli lik XLS
 * Logg ut-knapp, slik at man faktis kan logge inn og ut
+* Mulighet for å enkelt kunne legge til lunsj/interwebz
