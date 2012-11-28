@@ -2,15 +2,11 @@
 	<div class="navbar-inner">
 		<div class="container-fluid">
 				<a class="brand">USYS</a>
-				<form class="navbar-form pull-right" action="/" method="POST">
-					<input type="text" name="user" class="input-small" placeholder="Brukernavn">
-					<input type="password" name="password" class="input-small" placeholder="Passord">
-					<button type="submit" class="btn">Logg inn <i class="icon-lock"></i></button>
-				</form>
+				<a class="btn pull-right" href="/logout">Logg ut <i class="icon-lock"></i></a>
 				<div>
 					<ul class="nav">
-						<li ng-class="{active: location.path() == ''}"><a href="#">Legg til utgift</a></li>
-						<li ng-class="{active: location.path() == '/renderReport'}"><a href="#/renderReport">Generer rapport</a></li>
+						<li ng-class="{active: location.path() == ''}"><a href="#">Utgifter</a></li>
+						<li ng-class="{active: location.path() == '/renderReport'}"><a href="#/renderReport">Rapport</a></li>
 					</ul>
 				</div>
 			</div>

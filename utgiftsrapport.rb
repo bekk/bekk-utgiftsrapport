@@ -4,7 +4,7 @@ require 'pdfkit'
 class Utgiftsrapport < Sinatra::Base
   register Sinatra::Session
   enable :sessions
-  
+
   configure :development do 
     register Sinatra::Reloader
   end
@@ -46,7 +46,7 @@ class Utgiftsrapport < Sinatra::Base
 
   get '/logout' do
     session_end!(true)
-    redirect '/'
+    redirect '/login'
   end
 
   get "/rapport" do

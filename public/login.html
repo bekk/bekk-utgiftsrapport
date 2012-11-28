@@ -17,11 +17,31 @@
 </head>
 
 <body>
-	<form action="/login" method="POST" class="form-horizontal">
-		<input type="text" placeholder="Brukernavn" name="user" />
-		<input type="password" placeholder="Passord" name="password" />
-		<input type="submit" value="Logg inn" class="btn btn-success"/>
-	</form>
+	<div class="container login">
+		<div class="row">
+			<div class="span6 offset3">
+				<form action="/login" method="POST" class="form-horizontal">
+					<div class="control-group">
+						<label class="control-label" for="name">Brukernavn</label>
+						<div class="controls">
+							<input type="text" placeholder="Brukernavn" name="user" />
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label" for="password">Passord</label>
+						<div class="controls">
+							<input type="password" placeholder="Passord" name="password" />
+						</div>
+					</div>
+					<div class="control-group">
+						<div class="controls">
+							<input type="submit" value="Logg inn" class="btn btn-primary"/>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
 </body>
 
 </html>
