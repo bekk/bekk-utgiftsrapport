@@ -23,3 +23,4 @@
 * Vise, kollapset, andre perioder man har levert utgifter for.
 * Få rapport som PDF
 * Utvide rapport til å bli lik XLS
+* Logg ut-knapp, slik at man faktis kan logge inn og ut
