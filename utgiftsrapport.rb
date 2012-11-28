@@ -1,24 +1,52 @@
 require 'date'
 require 'pdfkit'
+
 class Utgiftsrapport < Sinatra::Base
+  register Sinatra::Session
+  enable :sessions
+  
   configure :development do 
     register Sinatra::Reloader
   end
-  enable :sessions
 
-  post "/" do
-    require "net/ldap"
-    ldap_con = Net::LDAP.new(:host => "midgard.bekk.no", :port => 389, :base => "dc=bekk,dc=no", :auth => { :method => :simple, :username => params[:user], :password => params[:password]})
-    if ldap_con.bind
-      session[:user] = params[:user]
-      p "#{params[:user]} logget inn"
-    end
-    send_file File.join(settings.public_folder, 'index.html')
-    true
+  configure do
+    set :session_fail, '/login'
+    set :session_secret, 'b4k3k4k3!'
   end
 
   get "/" do
+    session!
     send_file File.join(settings.public_folder, 'index.html')
+  end
+
+  get '/login' do
+    if session?
+      redirect '/'
+    else
+      send_file File.join(settings.public_folder, 'login.html')
+    end
+  end
+
+  post '/login' do
+    #require "net/ldap"
+    #ldap_con = Net::LDAP.new(:host => "midgard.bekk.no", :port => 389, :base => "dc=bekk,dc=no", :auth => { :method => :simple, :username => params[:user], :password => params[:password]})
+    #if ldap_con.bind
+      #session[:user] = params[:user]
+      #p "#{params[:user]} logget inn"
+    #end
+    #send_file File.join(settings.public_folder, 'index.html')
+    if params[:user]
+      session_start!
+      session[:user] = params[:user]
+      redirect '/'
+    else
+      redirect '/login'
+    end
+  end
+
+  get '/logout' do
+    session_end!(true)
+    redirect '/'
   end
 
   get "/rapport" do
@@ -89,6 +117,10 @@ class Utgiftsrapport < Sinatra::Base
 
 
 private
+
+  def current_user
+    @current_user = session[:user] if session[:user]
+  end
 
   def init_db
     @conn = Mongo::Connection.new
