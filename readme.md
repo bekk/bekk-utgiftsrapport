@@ -19,9 +19,12 @@
 
 ## Funksjonalitet
 * ~~Utgifter skal markeres som levert når man velger å levere en rapport~~
+* ~~Logg ut-knapp, slik at man faktis kan logge inn og ut~~
 * Endre rapportvisning slik at man kan velge å levere rapport
 * Vise, kollapset, andre perioder man har levert utgifter for.
 * Få rapport som PDF
 * Utvide rapport til å bli lik XLS
-* Logg ut-knapp, slik at man faktis kan logge inn og ut
 * Mulighet for å enkelt kunne legge til lunsj/interwebz
+
+## Bugs
+* Sesjoner ser ut til å henge igjen en request, selv om den er cleared på serveren
