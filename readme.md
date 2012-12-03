@@ -27,4 +27,4 @@
 * Mulighet for å enkelt kunne legge til lunsj/interwebz
 
 ## Bugs
-* Sesjoner ser ut til å henge igjen en request, selv om den er cleared på serveren
+* Sesjoner ser ut til å henge igjen én request, selv om den er cleared på serveren
