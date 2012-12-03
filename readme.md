@@ -18,8 +18,8 @@
 * Gjøre klart for akseptansetester (rspec/capybara/steak/poltergeist|phantom.js etc?)
 
 ## Funksjonalitet
+* ~~Utgifter skal markeres som levert når man velger å levere en rapport~~
 * Endre rapportvisning slik at man kan velge å levere rapport
-* Utgifter skal markeres som levert når man velger å levere en rapport
 * Vise, kollapset, andre perioder man har levert utgifter for.
 * Få rapport som PDF
 * Utvide rapport til å bli lik XLS
