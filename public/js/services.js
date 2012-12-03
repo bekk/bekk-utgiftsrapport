@@ -1,14 +1,27 @@
 var services = (function() {
 	var sharedProperties = function () {
-		var utgifter = [];
+		var expenses = [];
+
+		function getDeliveredExpenses() {
+	  		return _(expenses).filter(function(expense) {
+	  			return expense.levert === true;
+	  		});
+	  	}
+
+	  	function getNewExpenses() {
+	  		return _(expenses).filter(function(expense) {
+	  			return expense.levert !== true;
+	  		});
+	  	}
+
+	  	function setExpenses(newExpenses) {
+	  		expenses = newExpenses;
+	  	}
 
 		return {
-		  	getUtgifter:function () {
-		  		return utgifter;
-		  	},
-		  	setUtgifter:function (value) {
-		  		utgifter = value;
-		  	}
+		  	getDeliveredExpenses : getDeliveredExpenses,
+		  	getNewExpenses : getNewExpenses,
+		  	setExpenses : setExpenses
 		};
 	}
 

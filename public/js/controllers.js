@@ -1,9 +1,9 @@
 function refreshList($scope, sharedProperties) {
     jQuery.ajax({url: "/utgifter", 
         success: function(data) {
-            sharedProperties.setUtgifter(data);
-            console.log(data);
-            $scope.utgifter = data
+            sharedProperties.setExpenses(data);
+            $scope.newExpenses = sharedProperties.getNewExpenses();
+            $scope.deliveredExpenses = sharedProperties.getDeliveredExpenses();
         },
         error: function(data, status, headers, config) {
             alert("error");
@@ -19,7 +19,9 @@ function MenuCtrl($scope, $location) {
 function UtgiftCtrl($scope, $http, sharedProperties) {
     refreshList($scope, sharedProperties);
 
-    $scope.utgifter = sharedProperties.getUtgifter();
+    $scope.newExpenses = sharedProperties.getNewExpenses();
+    $scope.deliveredExpenses = sharedProperties.getDeliveredExpenses();
+    console.log($scope.newExpenses);
  
     $scope.addUtgift = function() {
         var sum = parseFloat($scope.sum, 10);
@@ -27,7 +29,7 @@ function UtgiftCtrl($scope, $http, sharedProperties) {
         jQuery.ajax({
             url: "/utgift", 
             type: "POST",
-            data: {tittel: $scope.tittel, sum: sum, levert: false},
+            data: {'tittel': $scope.tittel, 'sum': sum, 'levert': false},
             success: function(data) {
                 refreshList($scope, sharedProperties);
             },
@@ -62,7 +64,7 @@ function UtgiftCtrl($scope, $http, sharedProperties) {
 function RenderReportCtrl($scope, sharedProperties) {
     refreshList($scope, sharedProperties);
 
-	$scope.utgifter = sharedProperties.getUtgifter();
+	$scope.utgifter = sharedProperties.getNewExpenses();
 	var matrix = utils.receiptsToMatrix($scope.utgifter);
 
 	$scope.matrix = matrix;
@@ -106,7 +108,7 @@ function RenderReportCtrl($scope, sharedProperties) {
     }
 
     $scope.deliverReport = function(event) {
-        var idList = _.map(sharedProperties.getUtgifter(), function(item) {
+        var idList = _.map(sharedProperties.getNewExpenses(), function(item) {
             return item._id.$oid;
         });
         var obj = { 'utgifter': idList };

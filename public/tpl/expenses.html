@@ -1,0 +1,32 @@
+<div ng-controller="UtgiftCtrl">
+	<form ng-submit="addUtgift()" class="row">
+		<div class="span7"><input type="text" ng-model="tittel" placeholder="Beskrivelse" id="title-input" class="input-block-level" autofocus /></div>
+		<div class="span3"><input type="number" step="any" ng-model="sum" placeholder="Kronasjer og øre" class="input-block-level" /></div>
+		<div class="span2"><input class="btn btn-block" type="submit" value="Legg til" /></div>
+	</form>
+	<div class="row">
+		<div class="span12">
+			<table class="expenses table table-striped">
+				<thead>
+					<tr>
+						<th>Beskrivelse</th>
+						<th>Beløp</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="expense in newExpenses" class="new-expenses">
+						<td><span>{{expense.tittel}}</span></td>
+						<td><span>{{expense.sum}} NOK</span></td>
+						<td><button ng-click="slettUtgift(expense._id.$oid)" class="btn pull-right"><i class="icon-trash"></i></button></td>
+					</tr>
+					<tr ng-repeat="expense in deliveredExpenses" class="delivered-expenses">
+						<td><span>{{expense.tittel}}</span></td>
+						<td><span>{{expense.sum}} NOK</span></td>
+						<td><button class="btn pull-right disabled"><i class="icon-trash"></i></button></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

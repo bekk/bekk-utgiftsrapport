@@ -12,6 +12,7 @@ class Utgiftsrapport < Sinatra::Base
   configure do
     set :session_fail, '/login'
     set :session_secret, 'b4k3k4k3!'
+    mime_type :json, 'application/json'
   end
 
   get "/" do
@@ -49,26 +50,6 @@ class Utgiftsrapport < Sinatra::Base
     redirect '/login'
   end
 
-  get "/rapport" do
-      init_db
-      html = "<table><tr><th>Beskrivelse</th><th>Sum</th><th>Dato</th></tr>"
-      results = @coll.find({'user_id' => params[:user]})
-      results.each do |f|
-	p f
-	html += "<tr>"
-	html += "<td>#{f["tittel"]}</td><td>#{f["sum"]}</td><td>#{f["created_at"]}</td>"
-	html += "</tr>"
-      end
-      html += "</table>"
-      kit = PDFKit.new(html)
-      content_type 'application/pdf'
-      kit.to_pdf
-  end
-
-  configure do
-    mime_type :json, 'application/json'
-  end
-
   get '/service' do
     content_type :json
     "{name: 'Utgiftsrapporteringssystem Enterprise Edition', version: 0.1}"
@@ -102,7 +83,7 @@ class Utgiftsrapport < Sinatra::Base
 
   get '/utgifter' do
     init_db
-    utgifter = @coll.find({'user' => session[:user]})
+    utgifter = @coll.find({'user' => session[:user]}).sort(:created_at => :desc)
     content_type :json
     utgifter.to_a.to_json
   end
@@ -119,6 +100,22 @@ class Utgiftsrapport < Sinatra::Base
         }
       )
     end
+  end
+
+  get "/rapport" do
+      init_db
+      html = "<table><tr><th>Beskrivelse</th><th>Sum</th><th>Dato</th></tr>"
+      results = @coll.find({'user_id' => params[:user]})
+      results.each do |f|
+  p f
+  html += "<tr>"
+  html += "<td>#{f["tittel"]}</td><td>#{f["sum"]}</td><td>#{f["created_at"]}</td>"
+  html += "</tr>"
+      end
+      html += "</table>"
+      kit = PDFKit.new(html)
+      content_type 'application/pdf'
+      kit.to_pdf
   end
 
   post '/rapport' do
