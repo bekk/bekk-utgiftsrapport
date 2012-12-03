@@ -2,11 +2,12 @@ function refreshList($scope, sharedProperties) {
     jQuery.ajax({url: "/utgifter", 
         success: function(data) {
             sharedProperties.setUtgifter(data);
+            console.log(data);
             $scope.utgifter = data
         },
         error: function(data, status, headers, config) {
-                alert("error");
-            },
+            alert("error");
+        },
         async: false
     });
 }
@@ -26,13 +27,13 @@ function UtgiftCtrl($scope, $http, sharedProperties) {
         jQuery.ajax({
             url: "/utgift", 
             type: "POST",
-            data: {tittel: $scope.tittel, sum: sum},
+            data: {tittel: $scope.tittel, sum: sum, levert: false},
             success: function(data) {
-                    refreshList($scope, sharedProperties);
-                },
+                refreshList($scope, sharedProperties);
+            },
             error: function(data, status, headers, config) {
-                    alert("error");
-                },
+                alert("error");
+            },
             async: false
         });
 
@@ -102,5 +103,23 @@ function RenderReportCtrl($scope, sharedProperties) {
             },
             async:false
         })
+    }
+
+    $scope.deliverReport = function(event) {
+        var idList = _.map(sharedProperties.getUtgifter(), function(item) {
+            return item._id.$oid;
+        });
+        var obj = { 'utgifter': idList };
+        jQuery.ajax({
+            url: "/utgifter/lever",
+            type: "POST",
+            data: obj,
+            success: function(data) {
+                console.log("det gikk!");
+            },
+            error: function(error) {
+                console.log(error);
+            }
+        });
     }
 }

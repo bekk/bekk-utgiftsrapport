@@ -74,24 +74,23 @@ class Utgiftsrapport < Sinatra::Base
     "{name: 'Utgiftsrapporteringssystem Enterprise Edition', version: 0.1}"
   end
 
-  post '/utgift' do
-    init_db   
-    p session[:user] 
-    # TODO: Legg hent user_id fra egnet sted
-    if params[:id].nil? || params[:id].empty?
-      utgift = @coll.insert({'user' => session[:user],  'tittel' => params[:tittel].to_s, 'sum' => params[:sum], :created_at => Time.now})
-    else
-      utgift = @coll.update({'_id' => BSON::ObjectId(params[:id])}, {'user_id' => session[:user], 'tittel' => params[:tittel].to_s, 'sum' => params[:sum]})
-    end
-    content_type :json
-    utgift.to_json
-  end
-
   get '/utgift' do
     init_db
     utgift = @coll.find({'_id' => BSON::ObjectId(params[:id])})
     content_type :json
     utgift.first.to_json
+  end
+
+  post '/utgift' do
+    init_db
+    # TODO: Legg hent user_id fra egnet sted
+    if params[:id].nil? || params[:id].empty?
+      utgift = @coll.insert({'user' => session[:user],  'tittel' => params[:tittel].to_s, 'sum' => params[:sum], 'levert' => params[:levert], :created_at => Time.now})
+    else
+      utgift = @coll.update({'_id' => BSON::ObjectId(params[:id])}, {'user_id' => session[:user], 'tittel' => params[:tittel].to_s, 'sum' => params[:sum], 'levert' => params[:levert]})
+    end
+    content_type :json
+    utgift.to_json
   end
 
   delete '/utgift' do
@@ -106,6 +105,20 @@ class Utgiftsrapport < Sinatra::Base
     utgifter = @coll.find({'user' => session[:user]})
     content_type :json
     utgifter.to_a.to_json
+  end
+
+  post '/utgifter/lever' do
+    init_db
+    utgifter = params[:utgifter]
+    utgifter.each do |utgift|
+      p utgift
+      @coll.update(
+        {'_id' => BSON::ObjectId(utgift.to_s)},
+        {
+          '$set' => { 'levert' => true }
+        }
+      )
+    end
   end
 
   post '/rapport' do
