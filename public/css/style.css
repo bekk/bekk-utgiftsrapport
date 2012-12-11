@@ -20,3 +20,8 @@ body {
 .delivered-expenses {
 	color: #999999;
 }
+
+@media print {
+	.btn,
+	.print-hide {display: none !important;}
+}
