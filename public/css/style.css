@@ -1,0 +1,22 @@
+body {
+	background: whitesmoke;
+	margin: 10px;
+}
+
+.app {
+	margin-top: 75px;
+}
+
+.login {
+	margin-top: 100px;
+}
+
+.login form {
+	background: white;
+	box-shadow: 0 0 9px rgba(0, 0, 0, .5);
+	padding: 55px 0 15px 0;
+}
+
+.delivered-expenses {
+	color: #999999;
+}

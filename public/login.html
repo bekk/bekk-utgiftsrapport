@@ -5,7 +5,6 @@
 	<title>USYS 0.1</title>
 	<link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<script type="text/javascript" src="lib/underscore/underscore-min.js"></script>
 	<script type="text/javascript" src="lib/jquery/jquery.min.js"></script>
 	<script type="text/javascript" src="lib/bootstrap/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="lib/angular/angular.js"></script>
@@ -18,8 +17,31 @@
 </head>
 
 <body>
-	<div class="container-fluid" ng-controller="MenuCtrl" ng-include src="'tpl/menu.html'"></div>
-	<div class="container app" ng-view></div>
+	<div class="container login">
+		<div class="row">
+			<div class="span6 offset3">
+				<form action="/login" method="POST" class="form-horizontal">
+					<div class="control-group">
+						<label class="control-label" for="name">Brukernavn</label>
+						<div class="controls">
+							<input type="text" placeholder="Brukernavn" name="user" />
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label" for="password">Passord</label>
+						<div class="controls">
+							<input type="password" placeholder="Passord" name="password" />
+						</div>
+					</div>
+					<div class="control-group">
+						<div class="controls">
+							<input type="submit" value="Logg inn" class="btn btn-primary"/>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
 </body>
 
 </html>
