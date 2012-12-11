@@ -61,10 +61,25 @@ function UtgiftCtrl($scope, $http, sharedProperties) {
     };
 }
 
+function tilpassAntallUtgifter(utgifter) {
+    utgifter = utgifter.slice(0, 3);
+    var arrayLength = utgifter.length;
+    for (var i = 0; i < 3 - arrayLength; i++) {
+        utgifter.push({tittel: "-", sum: "-"});
+    }
+    return utgifter;
+}
+
 function RenderReportCtrl($scope, sharedProperties) {
     refreshList($scope, sharedProperties);
 
 	$scope.utgifter = sharedProperties.getNewExpenses();
+    
+    if ($scope.utgifter.length != 3) {
+        //TODO: Må ha kun 3 kvitteringer slik nåværende receiptsToMatrix fungerer!
+        $scope.utgifter = tilpassAntallUtgifter($scope.utgifter);
+    }
+
 	var matrix = utils.receiptsToMatrix($scope.utgifter);
 
 	$scope.matrix = matrix;

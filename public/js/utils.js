@@ -1,9 +1,5 @@
 var utils = (function() {
 	function receiptsToMatrix(receipts) {
-		if (receipts.length != 3) {
-			alert("TODO: Må ha kun 3 kvitteringer!");
-		}
-
 		var matrix = [];
 
 		for (var i in receipts) {
