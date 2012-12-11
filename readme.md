@@ -16,6 +16,7 @@
 ## Teknisk
 * Integrasjon mot SSO
 * Gjøre klart for akseptansetester (rspec/capybara/steak/poltergeist|phantom.js etc?)
+* Legge på sky.bekk.no
 
 ## Funksjonalitet
 * Endre rapportvisning slik at man kan velge å levere rapport
@@ -23,3 +24,4 @@
 * Vise, kollapset, andre perioder man har levert utgifter for.
 * Få rapport som PDF
 * Utvide rapport til å bli lik XLS
+* Admin-grensesnitt for regnskap (se info om hver ansatt, og hvor mye utestående bilag det er, osv)
