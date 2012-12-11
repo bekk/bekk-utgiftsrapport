@@ -5,8 +5,10 @@
 * Installer en nyere ruby ( med f.eks. rvm eller rbenv)
 * Installer Bundler: `gem install bundler`
 * I denne katalogen: `bundle install`
-* Installer mongodb fra apt, brew e.l
-* Hvis windows: start mongodb med `mongod --dbpath c:\mongodb\data`
+* Installer WKHTMLTOPDF: https://github.com/pdfkit/pdfkit/wiki/Installing-WKHTMLTOPDF
+* Hvis Windows: Kommenter inn linjen i init_pdfkit i utgiftsrapport.rb
+* Installer mongodb fra apt, brew e.l (hvis Windows, last ned fra nettsiden deres)
+* Hvis Windows: start mongodb med `mongod --dbpath c:\mongodb\data`
 * Hvis Mac: start mongodb med `mongod`
 * Deretter `bundle exec rackup` for å starte utviklingsserver
 * `http://localhost:9292/index.html`

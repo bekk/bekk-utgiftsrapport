@@ -104,6 +104,8 @@ class Utgiftsrapport < Sinatra::Base
 
   get "/rapport" do
       init_db
+      init_pdfkit
+
       html = "<table><tr><th>Beskrivelse</th><th>Sum</th><th>Dato</th></tr>"
       results = @coll.find({'user_id' => params[:user]})
       results.each do |f|
@@ -136,5 +138,11 @@ private
     @conn = Mongo::Connection.new
     @db = @conn['test']
     @coll = @db['usysdev']
+  end
+
+  def init_pdfkit
+    PDFKit.configure do |config|
+      #config.wkhtmltopdf = 'C:\\wkhtmltopdf\\wkhtmltopdf.exe'
+    end
   end
 end
