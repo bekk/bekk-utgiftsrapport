@@ -84,6 +84,8 @@ function RenderReportCtrl($scope, sharedProperties) {
 
 	$scope.matrix = matrix;
 
+    $scope.radsummer = utils.matrixToRadsummer(matrix);
+
     $scope.$on('$viewContentLoaded', doRepeat);
 
     $scope.genererRapport = function (event) {

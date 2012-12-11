@@ -47,7 +47,14 @@
 						<th>Sum per linje</th>
 						<th>Konto</th>
 					</tr>
-					<tr repeat="7"><td>&nbsp;</td><td>&nbsp;</td></tr>
+					<tr repeat="4">
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr ng-repeat="radsum in radsummer">
+						<td>{{radsum}}</td>
+						<td>&nbsp;</td>
+					</tr>
 				</table>
 			</td>
 		</tr>
