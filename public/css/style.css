@@ -17,7 +17,15 @@ body {
 	padding: 55px 0 15px 0;
 }
 
+.delivered-expenses-header {
+	margin-top: 70px;
+}
+
 .delivered-expenses {
+	/*margin-top: 70px;*/
+}
+
+.delivered-expenses  td{
 	color: #999999;
 }
 

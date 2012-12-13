@@ -21,7 +21,6 @@ function UtgiftCtrl($scope, $http, sharedProperties) {
 
     $scope.newExpenses = sharedProperties.getNewExpenses();
     $scope.deliveredExpenses = sharedProperties.getDeliveredExpenses();
-    console.log($scope.newExpenses);
  
     $scope.addUtgift = function() {
         var sum = parseFloat($scope.sum, 10);

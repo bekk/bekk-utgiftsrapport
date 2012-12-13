@@ -6,27 +6,41 @@
 	</form>
 	<div class="row">
 		<div class="span12">
-			<table class="expenses table table-striped">
-				<thead>
-					<tr>
-						<th>Beskrivelse</th>
-						<th>Beløp</th>
-						<th></th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr ng-repeat="expense in newExpenses" class="new-expenses">
-						<td><span>{{expense.tittel}}</span></td>
-						<td><span>{{expense.sum}} NOK</span></td>
-						<td><button ng-click="slettUtgift(expense._id.$oid)" class="btn pull-right"><i class="icon-trash"></i></button></td>
-					</tr>
-					<tr ng-repeat="expense in deliveredExpenses" class="delivered-expenses">
-						<td><span>{{expense.tittel}}</span></td>
-						<td><span>{{expense.sum}} NOK</span></td>
-						<td><button class="btn pull-right disabled"><i class="icon-trash"></i></button></td>
-					</tr>
-				</tbody>
-			</table>
+			<div class="well">
+				<table class="new-expenses table table-striped">
+					<thead>
+						<tr>
+							<th>Beskrivelse</th>
+							<th>Beløp</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="expense in newExpenses">
+							<td><span>{{expense.tittel}}</span></td>
+							<td><span>{{expense.sum}} NOK</span></td>
+							<td><button ng-click="slettUtgift(expense._id.$oid)" class="btn pull-right"><i class="icon-trash"></i></button></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<h3 class="delivered-expenses-header">Eldre utgifter</h3>
+			<div class="well delivered-expenses">
+				<table class="table table-striped collapse">
+					<thead>
+						<tr>
+							<th>Beskrivelse</th>
+							<th>Beløp</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="expense in deliveredExpenses" class="delivered-expenses collapse">
+							<td><span>{{expense.tittel}}</span></td>
+							<td><span>{{expense.sum}} NOK</span></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
 		</div>
 	</div>
 </div>
